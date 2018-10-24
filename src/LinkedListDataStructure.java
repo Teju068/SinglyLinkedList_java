@@ -14,6 +14,7 @@ public class LinkedListDataStructure {
 			Utils.printf("5 : Remove at Start");
 			Utils.printf("6 : Remove at End");
 			Utils.printf("7 : Traverse");
+			Utils.printf("8 : Reverse List");
 
 			Utils.printfr("Enter the choice ==>");
 			int nChoice = scanner.nextInt();
@@ -41,9 +42,20 @@ public class LinkedListDataStructure {
 				int nremovableItem = scanner.nextInt();
 				linkedList.removeNode(nremovableItem);
 				break;
+			case 5:
+				//TODO
+				break;
+			case 6:
+				//TODO
+				break;
 			case 7:
 				linkedList.traverseNode();
 				break;
+			case 8:
+				 Utils.printf("Reversing the list");
+				 linkedList.reverseList();
+				break;
+				
 			default:
 				break;
 

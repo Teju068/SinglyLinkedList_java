@@ -16,7 +16,7 @@ public class LinkedList {
 			start = newNode;
 			end = newNode;
 		} else {
-			newNode.setNode(start);
+			newNode.setNextNode(start);
 			start = newNode;
 		}
 	}
@@ -28,7 +28,7 @@ public class LinkedList {
 			start = newNode;
 			end = newNode;
 		} else {
-			end.setNode(newNode);
+			end.setNextNode(newNode);
 			end = newNode;
 		}
 	}
@@ -45,14 +45,14 @@ public class LinkedList {
 			nCounter++;
 			if (nCounter == pos - 1) {
 				Node newNode = new Node(data, null);
-				if (ptr != null && ptr.getNode() != null) {
+				if (ptr != null && ptr.getNextNode() != null) {
 					size++;
-					newNode.setNode(ptr.getNode());
-					ptr.setNode(newNode);
+					newNode.setNextNode(ptr.getNextNode());
+					ptr.setNextNode(newNode);
 					Utils.printf("Node inserted successfully");
 				}
 			}
-			ptr = ptr.getNode();
+			ptr = ptr.getNextNode();
 		}
 	}
 
@@ -69,19 +69,19 @@ public class LinkedList {
 			 */
 			if (firstptr.getData() == data && secondptr.getData() == data) {
 				// Removing first item
-				start = firstptr.getNode();
+				start = firstptr.getNextNode();
 				break;
 			} else {
 				if (secondptr.getData() == data) {
-					firstptr.setNode(secondptr.getNode());
+					firstptr.setNextNode(secondptr.getNextNode());
 					break;
 				}
 				if (bmovemarker == false) {
-					secondptr = secondptr.getNode();
+					secondptr = secondptr.getNextNode();
 					bmovemarker = true;
 				} else {
-					firstptr = firstptr.getNode();
-					secondptr = secondptr.getNode();
+					firstptr = firstptr.getNextNode();
+					secondptr = secondptr.getNextNode();
 				}
 			}
 		}
@@ -98,10 +98,34 @@ public class LinkedList {
 			return;
 		}
 		ptr = start;
-		while (ptr.getNode() != null) {
+		while (ptr.getNextNode() != null) {
 			Utils.printfr("\t");
 			Utils.printfr(Integer.toString(ptr.getData()));
-			ptr = ptr.getNode();
+			ptr = ptr.getNextNode();
+		}
+		Utils.printfr("\t");
+		Utils.printfr(Integer.toString(ptr.getData()));
+		Utils.printf("\n");
+	}
+	
+	public void reverseList() {
+		Node ptr,tailNode;
+		ptr = start;
+		tailNode = start;
+		tailNode.setNextNode(null);
+		while(ptr.getNextNode() != null) {
+			ptr = ptr.getNextNode();
+			ptr.setNextNode(tailNode);
+			tailNode = ptr;
+		}
+		traverseNode(ptr);
+	}
+	
+	public void traverseNode(Node ptr) {
+		while (ptr.getNextNode() != null) {
+			Utils.printfr("\t");
+			Utils.printfr(Integer.toString(ptr.getData()));
+			ptr = ptr.getNextNode();
 		}
 		Utils.printfr("\t");
 		Utils.printfr(Integer.toString(ptr.getData()));

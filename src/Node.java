@@ -20,11 +20,11 @@ public class Node {
 		this.data = data;
 	}
 
-	public Node getNode() {
+	public Node getNextNode() {
 		return this.node;
 	}
 
-	public void setNode(Node node) {
+	public void setNextNode(Node node) {
 		this.node = node;
 	}
 
